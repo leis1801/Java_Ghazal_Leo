@@ -100,6 +100,25 @@
 </script>
 
 
+<p>A pie chart showing the percentage of each type of room "room_type" has of the total number object</p>
+<div id="piechart" >
+  <!-- Plotly chart will be drawn inside this DIV -->
+</div>
+<script>
+  var data_pie = [{
+    values: accommodates,
+    labels: room_type,
+    type: 'pie'
+  }];
+
+  var layout = {
+    height: 400,
+    width: 500
+  };
+  Plotly.newPlot('piechart', data_pie, layout);
+</script>
+
+
 </body>
 
 </html>
