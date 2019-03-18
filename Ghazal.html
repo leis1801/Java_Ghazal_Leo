@@ -70,6 +70,35 @@
 </script>
 
 
+<p>A histogram showing the spread of the number of guests (accomodates)</p>
+<div id="hist" >
+  <!-- Plotly chart will be drawn inside this DIV -->
+</div>
+<script>
+  var accommodates = [];
+  for (i = 0; i < airbnb.length; i++) {
+    accommodates.push(airbnb[i].accommodates)
+  };
+
+  var room_type = [];
+  for (i = 0; i < airbnb.length; i++) {
+    room_type.push(airbnb[i].room_type)
+
+  };
+
+  var data_hist = [
+    {
+      histfunc: "sum",
+      y: accommodates,
+      x: room_type,
+      type: "histogram",
+      name: "sum"
+    }
+  ]
+
+  Plotly.newPlot('hist', data_hist)
+</script>
+
 
 </body>
 
