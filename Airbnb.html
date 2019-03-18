@@ -1,0 +1,104 @@
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link rel="stylesheet" type="text/css" href="Aibnb_style.css">
+   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+   <title> Aibnb Graphs </title>
+</head>
+
+<body>
+    <h2> Scatter Plot Revies vs Price </h2>
+    <div  id="scatterPlot"><!-- Plotly chart will be drawn inside this DIV --></div>
+    <h2> Chart Bar Price vs Time </h2>
+    <div id="ChartBar"><!-- Plotly chart will be drawn inside this DIV --></div>
+    <h2> Chart Bar Accommodates vs Time </h2>
+    <div id="ChartBar2"><!-- Plotly chart will be drawn inside this DIV --></div>
+</body>
+
+<script
+    type = "text/javascript" src="Airbnb_plugin.js"> // kopplling till js filen 
+</script>
+
+
+<script>
+    var prices = []; // en lista skapas 
+    for (i=0; i < airbnbData.length; i++) {
+    prices.push (airbnbData[i].price)
+};
+
+    var reviews = [];
+    for (i=0; i < airbnbData.length; i++) {
+    reviews.push (airbnbData[i].reviews)
+};  
+
+    var priceRev = {
+    x: prices,
+    y: reviews,
+    mode: 'markers',
+    type: 'scatter'};
+
+    var data = [priceRev];
+
+Plotly.newPlot('scatterPlot', data);
+</script>
+
+
+<script>
+
+    var rentPrices = []; // en lista skapas 
+    for (i=0; i < airbnbData.length; i++) {
+    rentPrices.push (airbnbData[i].price)
+    };
+
+    var rentDate = []; 
+    for (i=0; i < airbnbData.length; i++) {
+    rentDate.push (airbnbData[i].last_modified)
+    };
+
+    var rentP = [
+  {
+    x: rentDate,
+    y: rentPrices,
+    type: 'bar'
+  }
+];
+
+var data2 = rentP
+
+Plotly.newPlot('ChartBar', data2);
+
+</script>
+
+
+<script>
+var guests = []; // en lista skapas 
+for (i=0; i < airbnbData.length; i++) {
+guests.push (airbnbData[i].accommodates)
+};
+
+var accommodatesDate = []; 
+for (i=0; i < airbnbData.length; i++) {
+accommodatesDate.push (airbnbData[i].last_modified)
+};
+
+var guestsDate = [
+{
+x: accommodatesDate,
+y: guests,
+type: 'bar'
+}
+];
+
+var data3 = guestsDate
+
+Plotly.newPlot('ChartBar2', data3);
+
+</script>
+
+
+
+
+           
+</html>
