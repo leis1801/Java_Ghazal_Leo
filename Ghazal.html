@@ -39,7 +39,38 @@
     Plotly.newPlot('myDiv', data)
   </script>
 
-  
+<p>A histogram showing the spread of rental prices</p>
+<div id="mychart" >
+  <!-- Plotly chart will be drawn inside this DIV -->
+</div>
+
+<script>
+
+  var rentPrices = []; // en lista skapas
+  for (i = 0; i < airbnb.length; i++) {
+    rentPrices.push(airbnb[i].price)
+  };
+
+  var rentDate = [];
+  for (i = 0; i < airbnb.length; i++) {
+    rentDate.push(airbnb[i].last_modified)
+  };
+
+  var rentP = [
+    {
+      y: rentPrices,
+      x: rentDate,
+      type: 'bar'
+    }
+  ];
+
+  var data2 = rentP
+
+  Plotly.newPlot('mychart', data2);
+</script>
+
+
+
 </body>
 
 </html>
