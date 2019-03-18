@@ -1,64 +1,45 @@
 <html lang="en">
+
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <meta http-equiv="X-UA-Compatible" content="ie=edge">
- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
- <title> Aibnb Graphs </title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <title> Aibnb Graphs </title>
 </head>
+
 <body>
-    <div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
-     <!-- Plotly.js -->
-     <div id="mychart" style="width: 480px; height: 400px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+  <script type="text/javascript" src="anchorageAirBnB.js"> // kopplling till js filen
+  
+  </script>
+  <p>Scattered Plot</p>
+  <div id="myDiv">
+    <!-- Plotly chart will be drawn inside this DIV -->
+  </div>
+  <script>
+    var prices = [];
+    for (i = 0; i < airbnb.length; i++) {
+      prices.push(airbnb[i].price)
+    };
 
-<script
-type = "text/javascript" src="anchorageAirBnB.js"> // kopplling till js filen
-</script>
+    var reviews = [];
+    for (i = 0; i < airbnb.length; i++) {
+      console.log(airbnb[i].reviews)
+      reviews.push(airbnb[i].reviews)
 
-<script>
-         var prices = [];
-         for (i=0; i < airbnb.length; i++) {
-        prices.push (airbnb[i].price)};
+    };
+    var priceRev = {
+      x: prices,
+      y: reviews,
+      mode: 'markers',
+      type: 'scatter'
+    };
+    var data = [priceRev];
 
-         var reviews = [];
-         for (i=0; i < airbnb.length; i++) {
-         console.log(airbnb[i].reviews)
-         reviews.push (airbnb[i].reviews)
-         
-      };
-      var priceRev = {
-           x: prices,
-           y: reviews,
-           mode: 'markers',
-           type: 'scatter'};
-           var data = [priceRev];
+    Plotly.newPlot('myDiv', data)
+  </script>
 
-           Plotly.newPlot('myDiv', data)
-</script>
-<script>
-
-        var rentPrices = []; // en lista skapas
-        for (i=0; i < airbnb.length; i++) {
-        rentPrices.push (airbnb[i].price)
-        };
-     
-        var rentDate = [];
-        for (i=0; i < airbnb.length; i++) {
-        rentDate.push (airbnb[i].last_modified)
-        };
-     
-        var rentP = [
-      {
-        x: rentPrices,
-        y: rentDate,
-        type: 'bar'
-      }
-     ];
-     
-     var data2 = rentP
-     
-     Plotly.newPlot('mychart', data2);
-     </script>
-
+  
 </body>
+
 </html>
