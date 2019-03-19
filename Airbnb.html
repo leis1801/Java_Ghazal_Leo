@@ -15,6 +15,7 @@
     <div id="ChartBar"><!-- Plotly chart will be drawn inside this DIV --></div>
     <h2> Chart Bar Accommodates vs Time </h2>
     <div id="ChartBar2"><!-- Plotly chart will be drawn inside this DIV --></div>
+    <h2> Pie Chart Room Types </h2>
     <div id="piechart"><!-- Plotly chart will be drawn inside this DIV --></div>
 </body>
 
@@ -103,5 +104,31 @@ Plotly.newPlot('ChartBar2', data3);
 <!-- Ett pie chart som visar andel procent av varje typ 
 av rum ”room_type” har av det totala antalen objekt. -->
 
+<script>
+        var cake = [{
+          values: accommodates,
+          labels: room_type,
+          type: 'pie'
+        }];
+        var layout = {
+          height: 300,
+          width: 400
+        };
+
+        Plotly.newPlot('piechart',cake, layout);
+</script>
+
 
 </html>
+© 2019 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
