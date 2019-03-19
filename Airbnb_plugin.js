@@ -1,4 +1,3 @@
-HEAD
 var airbnbData = // vi har scapat variable av listan som vi kan hänvida till i aibnb.html filen
 [
  {
@@ -14316,9 +14315,3 @@ var airbnbData = // vi har scapat variable av listan som vi kan hänvida till i 
    "last_modified": "2016-05-13 00:25:25.368373"
  }
 ]
-
-
-
-
-
->>>>>>> f77d72ae3c39048d4f46d3f3ba1028941bb984ef
