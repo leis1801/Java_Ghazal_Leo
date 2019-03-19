@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-
+HEAD
 var airbnbData = // vi har scapat variable av listan som vi kan hänvida till i aibnb.html filen
 [
  {

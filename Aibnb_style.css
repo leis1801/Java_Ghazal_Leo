@@ -1,19 +1,10 @@
-<<<<<<< HEAD
+HEAD
 h1,h2,h3,h4{
     margin-left: 60px;
 	font-weight:bold; 
 	color: slategrey;		
 }
-
 #pricerev {
 	position:relative;
 	width:100%;	min-height: 100%;
-	margin:0; padding:0; 	
-
-=======
-h1,h2,h3,h4{
-    margin-left: 60px;
-	font-weight:bold; 
-	color: slategrey;		
->>>>>>> f77d72ae3c39048d4f46d3f3ba1028941bb984ef
-}
+	margin:0; padding:0; }
