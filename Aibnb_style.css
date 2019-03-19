@@ -4,7 +4,8 @@ h1,h2,h3,h4{
 	font-weight:bold; 
 	color: slategrey;		
 }
-#pricerev {
-	position:relative;
-	width:100%;	min-height: 100%;
-	margin:0; padding:0; }
+#scatterPlot {
+	position: relative;
+	widows: 5px;;	min-height: 5px;
+	margin-right: 50% ; padding:0;
+    color: brown }
