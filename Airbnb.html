@@ -15,13 +15,13 @@
 <body>
     <h4> Scatter plot of rent prices vs count of reviews</h4>
     <div  id="scatterPlot"><!-- Plotly chart will be drawn inside this DIV --></div>
-
+<br>
     <h4> A histogram showing the spread of rental prices </h4>
     <div id="priceHistogram"><!-- Plotly chart will be drawn inside this DIV --></div>
-
+<br>
     <h4> A histogram showing the spread of the number of guests (accomodates) </h4>
     <div id="guestHistogram"><!-- Plotly chart will be drawn inside this DIV --></div>
-
+<br>
     <h4>A pie chart showing the percentage of each type of room "room_type" 
         has of the total number object</h4>
     <div id="piechart" >  <!-- Plotly chart will be drawn inside this DIV --></div>
@@ -86,23 +86,47 @@ var guests = []; // en lista skapas
 for (i=0; i < airbnbData.length; i++) {
 guests.push (airbnbData[i].accommodates)
 };
+
+var room_type = []; // en lista skapas 
+        for (i=0; i < airbnbData.length; i++) {
+        room_type.push (airbnbData[i].room_type)
+};
    
         //Histogram of number of guests (accomodates)
         var guestData = [{
-            x: guests,
+            x: room_type,
+            y: guests,
+        
             type: 'histogram',
         }];
         // layout för histogram guest
         var layout_guest = {
             title: "Histogram Guest",
-            xaxis: {title: "Number of guests"},
-            yaxis: {title: "Count"},
+            xaxis: {title: "Room Type"},
+            yaxis: {title: "Number of guests"},
         }
 
 Plotly.newPlot('guestHistogram', guestData, layout_guest);
 </script>
 
-
+<script>
+       
+    
+          var data_pie = [{
+          values: guests,
+          labels: room_type,
+          type: 'pie'
+        }];
+      // layout för pie chart
+        var layout = {
+          height: 400,
+          width: 500,
+          title: "Pie Room"
+        };
+     
+       Plotly.newPlot('piechart', data_pie, layout);
+      </script>
+      
 
 
            
