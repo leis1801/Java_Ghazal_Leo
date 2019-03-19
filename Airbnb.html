@@ -10,13 +10,13 @@
 
 <body>
     <h2> Scatter Plot Revies vs Price </h2>
-    <div id="scatterPlot"><!-- Plotly chart will be drawn inside this DIV --></div>
+    <div  id="scatterPlot"><!-- Plotly chart will be drawn inside this DIV --></div>
     <h2> Chart Bar Price vs Time </h2>
     <div id="ChartBar"><!-- Plotly chart will be drawn inside this DIV --></div>
     <h2> Chart Bar Accommodates vs Time </h2>
     <div id="ChartBar2"><!-- Plotly chart will be drawn inside this DIV --></div>
     <h2> Pie Chart Room Types </h2>
-    <div id="piechart"><!-- Plotly chart will be drawn inside this DIV --></div>
+    <div id="Piechart"><!-- Plotly chart will be drawn inside this DIV --></div>
 </body>
 
 <script
@@ -101,4 +101,34 @@ Plotly.newPlot('ChartBar2', data3);
 
 </script>
 
+<!-- Ett pie chart som visar andel procent av varje typ 
+av rum ”room_type” har av det totala antalen objekt. -->
 
+<script>
+
+var accommodation = []; 
+for (i=0; i < airbnbData.length; i++) {
+accommodation.push (airbnbData[i].accommodates)
+};  
+
+var rooms = []; // en lista skapas 
+for (i=0; i < airbnbData.length; i++) {
+rooms.push (airbnbData[i].room_type)
+};
+
+var cake = [{
+  values:accommodation,
+  labels:rooms,
+  type: 'pie'
+}];
+
+var layout = {
+  height: 400,
+  width: 500
+};
+
+Plotly.newPlot('Piechart', cake, layout);
+
+</script>
+
+</html>
