@@ -1,5 +1,5 @@
 var airbnb= // vi har scapat variable av listan som vi kan hänvida till i aibnb.html filen
-
+[
  {
    "room_id": 12247489,
    "host_id": 65760400,
