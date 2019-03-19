@@ -15,13 +15,14 @@
     <div id="ChartBar"><!-- Plotly chart will be drawn inside this DIV --></div>
     <h2> Chart Bar Accommodates vs Time </h2>
     <div id="ChartBar2"><!-- Plotly chart will be drawn inside this DIV --></div>
+    <div id="piechart"><!-- Plotly chart will be drawn inside this DIV --></div>
 </body>
 
 <script
     type = "text/javascript" src="Airbnb_plugin.js"> // kopplling till js filen 
 </script>
 
-
+<!-- En spridningsplott som visar pris på x-axeln och antal recensioner på y-axeln.-->
 <script>
     var prices = []; // en lista skapas 
     for (i=0; i < airbnbData.length; i++) {
@@ -44,6 +45,7 @@
 Plotly.newPlot('scatterPlot', data);
 </script>
 
+<!-- Ett histogram som visar spridningen på hyrespriserna -->
 
 <script>
 
@@ -71,6 +73,7 @@ Plotly.newPlot('ChartBar', data2);
 
 </script>
 
+<!--Ett histogram som visar spridningen på antalet gäster (accomodates) -->
 
 <script>
 var guests = []; // en lista skapas 
@@ -97,8 +100,8 @@ Plotly.newPlot('ChartBar2', data3);
 
 </script>
 
+<!-- Ett pie chart som visar andel procent av varje typ 
+av rum ”room_type” har av det totala antalen objekt. -->
 
 
-
-           
 </html>
