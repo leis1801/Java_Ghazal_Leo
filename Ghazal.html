@@ -1,0 +1,126 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <title> Airbnb Graphs </title>
+</head>
+
+<body>
+  <script type="text/javascript" src="anchorageAirBnB.js"> // kopplling till js filen
+  
+  </script>
+  <p>//Scatter plot of rent prices vs count of reviews</p>
+  <div id="myDiv">
+       <!-- Plotly chart will be drawn inside this DIV -->
+  </div>
+  <script>
+  var prices = [];
+  for (i = 0; i < airbnb.length; i++) {
+  prices.push(airbnb[i].price)};
+
+  var reviews = [];
+  for (i = 0; i < airbnb.length; i++) {
+  reviews.push(airbnb[i].reviews)};
+  var priceRev = {
+  
+  x: prices,
+  y: reviews,
+  mode: 'markers',
+  type: 'scatter'};
+  var data = [priceRev];
+  // här läggs titel och axel rubriker
+  
+  var layout = {
+            title: "Price vs Reviews",
+            xaxis: {title: "Prices"},
+            yaxis: {title: "Reviews"},
+  }
+   Plotly.newPlot('myDiv', data, layout)
+  </script>
+
+<p>A histogram showing the spread of rental prices</p>
+<div id="mychart" >
+  <!-- Plotly chart will be drawn inside this DIV -->
+</div>
+
+<script>
+
+  var rentPrices = []; // en lista skapas
+  for (i = 0; i < airbnb.length; i++) {
+    rentPrices.push(airbnb[i].price)
+  };
+
+  var rentDate = [];
+  for (i = 0; i < airbnb.length; i++) {
+    rentDate.push(airbnb[i].last_modified)
+  };
+
+  var rentP = [
+    {
+      y: rentPrices,
+      x: rentDate,
+      type: 'bar'
+    }
+  ];
+
+  var data2 = rentP
+
+  Plotly.newPlot('mychart', data2);
+</script>
+
+
+<p>A histogram showing the spread of the number of guests (accomodates)</p>
+<div id="hist" >
+  <!-- Plotly chart will be drawn inside this DIV -->
+</div>
+<script>
+  var accommodates = [];
+  for (i = 0; i < airbnb.length; i++) {
+    accommodates.push(airbnb[i].accommodates)
+  };
+
+  var room_type = [];
+  for (i = 0; i < airbnb.length; i++) {
+    room_type.push(airbnb[i].room_type)
+
+  };
+
+  var data_hist = [
+    {
+      histfunc: "sum",
+      y: accommodates,
+      x: room_type,
+      type: "histogram",
+      name: "sum"
+    }
+  ]
+
+  Plotly.newPlot('hist', data_hist)
+</script>
+
+
+<p>A pie chart showing the percentage of each type of room "room_type" has of the total number object</p>
+<div id="piechart" >
+  <!-- Plotly chart will be drawn inside this DIV -->
+</div>
+<script>
+  var data_pie = [{
+    values: accommodates,
+    labels: room_type,
+    type: 'pie'
+  }];
+
+  var layout = {
+    height: 400,
+    width: 500
+  };
+  Plotly.newPlot('piechart', data_pie, layout);
+</script>
+
+
+</body>
+
+</html>
