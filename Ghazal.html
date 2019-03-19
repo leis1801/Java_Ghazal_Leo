@@ -5,38 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <title> Aibnb Graphs </title>
+  <title> Airbnb Graphs </title>
 </head>
 
 <body>
   <script type="text/javascript" src="anchorageAirBnB.js"> // kopplling till js filen
   
   </script>
-  <p>Scattered Plot</p>
+  <p>//Scatter plot of rent prices vs count of reviews</p>
   <div id="myDiv">
-    <!-- Plotly chart will be drawn inside this DIV -->
+       <!-- Plotly chart will be drawn inside this DIV -->
   </div>
   <script>
-    var prices = [];
-    for (i = 0; i < airbnb.length; i++) {
-      prices.push(airbnb[i].price)
-    };
+  var prices = [];
+  for (i = 0; i < airbnb.length; i++) {
+  prices.push(airbnb[i].price)};
 
-    var reviews = [];
-    for (i = 0; i < airbnb.length; i++) {
-      console.log(airbnb[i].reviews)
-      reviews.push(airbnb[i].reviews)
-
-    };
-    var priceRev = {
-      x: prices,
-      y: reviews,
-      mode: 'markers',
-      type: 'scatter'
-    };
-    var data = [priceRev];
-
-    Plotly.newPlot('myDiv', data)
+  var reviews = [];
+  for (i = 0; i < airbnb.length; i++) {
+  reviews.push(airbnb[i].reviews)};
+  var priceRev = {
+  
+  x: prices,
+  y: reviews,
+  mode: 'markers',
+  type: 'scatter'};
+  var data = [priceRev];
+  // här läggs titel och axel rubriker
+  
+  var layout = {
+            title: "Price vs Reviews",
+            xaxis: {title: "Prices"},
+            yaxis: {title: "Reviews"},
+  }
+   Plotly.newPlot('myDiv', data, layout)
   </script>
 
 <p>A histogram showing the spread of rental prices</p>
