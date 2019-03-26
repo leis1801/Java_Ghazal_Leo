@@ -9,19 +9,21 @@
 </head>
 
 <body>
-    <h2> Scatter Plot Revies vs Price </h2>
-    <div  id="scatterPlot"><!-- Plotly chart will be drawn inside this DIV --></div>
-    <h2> Chart Bar Price vs Time </h2>
+    <h2> Revies vs Price </h2>
+    <div id="scatterPlot"><!-- Plotly chart will be drawn inside this DIV --></div>
+    <h2> Price Frequency </h2>
     <div id="ChartBar"><!-- Plotly chart will be drawn inside this DIV --></div>
-    <h2> Chart Bar Accommodates vs Time </h2>
+    <h2> Guests vs Room Types </h2>
     <div id="ChartBar2"><!-- Plotly chart will be drawn inside this DIV --></div>
-    <h2> Pie Chart Room Types </h2>
+    <h2> Room Types  </h2>
     <div id="Piechart"><!-- Plotly chart will be drawn inside this DIV --></div>
 </body>
 
 <script
     type = "text/javascript" src="Airbnb_plugin.js"> // kopplling till js filen 
 </script>
+
+
 
 <!-- En spridningsplott som visar pris på x-axeln och antal recensioner på y-axeln.-->
 <script>
@@ -43,8 +45,16 @@
 
     var data = [priceRev];
 
-Plotly.newPlot('scatterPlot', data);
+    var layout = {
+      height: 400, width: 600,
+            xaxis: {title: "Prices"},
+            yaxis: {title: "Reviews"},
+    }
+
+Plotly.newPlot('scatterPlot', data, layout, {responsive: true});
 </script>
+
+
 
 <!-- Ett histogram som visar spridningen på hyrespriserna -->
 
@@ -55,49 +65,68 @@ Plotly.newPlot('scatterPlot', data);
     rentPrices.push (airbnbData[i].price)
     };
 
-    var rentDate = []; 
-    for (i=0; i < airbnbData.length; i++) {
-    rentDate.push (airbnbData[i].last_modified)
-    };
-
-    var rentP = [
+    var priceData = [
   {
-    x: rentDate,
-    y: rentPrices,
-    type: 'bar'
+    x: rentPrices,
+    xbins: {
+      end:800,
+      size: 50,
+      start: 0
+    } ,
+
+    type: "histogram",
+    marker: {color:"purple"}
   }
 ];
 
-var data2 = rentP
+var layout = {
+  height: 400, width: 600,
+            xaxis: {title: "Rent Prices"},
+            yaxis: {title: "Frequency"},
+}           
 
-Plotly.newPlot('ChartBar', data2);
+Plotly.newPlot('ChartBar', priceData, layout, {responsive: true});
 
 </script>
+
+
 
 <!--Ett histogram som visar spridningen på antalet gäster (accomodates) -->
 
 <script>
-var guests = []; // en lista skapas 
+var accommodates = []; // en lista skapas 
 for (i=0; i < airbnbData.length; i++) {
-guests.push (airbnbData[i].accommodates)
+accommodates.push (airbnbData[i].accommodates)
 };
 
-var accommodatesDate = []; 
+var room_type = []; 
 for (i=0; i < airbnbData.length; i++) {
-accommodatesDate.push (airbnbData[i].last_modified)
+room_type.push (airbnbData[i].room_type)
 };
 
-var guestsDate = [
+var room_type = [];
+  for (i = 0; i < airbnbData.length; i++) {
+    room_type.push(airbnbData[i].room_type)
+  };
+
+
+var Guestdata = [
 {
-x: accommodatesDate,
-y: guests,
-type: 'bar'
+x: room_type,
+y: accommodates,
+type: 'histogram',
+width: 1,
+marker: {color:"red"}
 }
 ];
 
-var data3 = guestsDate
+var layout = {
+            height: 500, width: 600,
+            xaxis: {title: "Room Type"},
+            yaxis: {title: "Guets"},
+}
 
-Plotly.newPlot('ChartBar2', data3);
+Plotly.newPlot('ChartBar2',Guestdata, layout, {responsive: true});
 
 </script>
 
@@ -127,8 +156,10 @@ var layout = {
   width: 500
 };
 
-Plotly.newPlot('Piechart', cake, layout);
+Plotly.newPlot('Piechart', cake, layout, {responsive: true});
 
 </script>
 
 </html>
+
+// en lista skapas 
